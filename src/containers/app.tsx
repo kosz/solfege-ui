@@ -33,8 +33,7 @@ class App extends React.Component<IAppProps, void> {
   render() {
     const { session, login, logout, children } = this.props;
     const token = session.get('token', false);
-    //const isLoggedIn = token && token !== null && typeof token !== 'undefined';
-    const isLoggedIn = true;
+    const isLoggedIn = token && token !== null && typeof token !== 'undefined';
 
     return (
       <div>
