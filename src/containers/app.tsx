@@ -51,6 +51,9 @@ class App extends React.Component<IAppProps, void> {
               <Link to="/">Counter</Link>
             </NavigatorItem>
             <NavigatorItem isVisible={ isLoggedIn } className="p1">
+              <Link to="/piano">Piano</Link>
+            </NavigatorItem>
+            <NavigatorItem isVisible={ isLoggedIn } className="p1">
               <Link to="/about">About Us</Link>
             </NavigatorItem>
           </div>

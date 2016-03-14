@@ -1,8 +1,7 @@
 {
-  "name": "typescript-react-redux-starter",
-  "version": "0.1.0",
-  "description": "A boiler-plate setup for TypeScript/React/Redux applications",
-  "license": "MIT",
+  "name": "solfege-ui",
+  "version": "0.0.0",
+  "description": "Solfege UI",
   "engines": {
     "node": "4.x"
   },
@@ -17,20 +16,6 @@
     "test": "npm run lint && ts-node ./node_modules/mocha/bin/_mocha --opts ./test/mocha.opts",
     "test:watch": "ts-node ./node_modules/mocha/bin/_mocha --opts ./test/mocha.opts --watch",
     "lint": "tslint 'src/**/*.tsx' 'src/**/*.ts' 'test/**/*.tsx' 'test/**/*.ts'"
-  },
-  "keywords": [
-    "react",
-    "redux",
-    "typescript",
-    "starter",
-    "seed"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rangle/typescript-react-redux-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rangle/rangle-starter/issues"
   },
   "dependencies": {
     "express": "^4.13.4",
