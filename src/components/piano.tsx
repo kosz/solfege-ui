@@ -49,7 +49,7 @@ class Piano extends React.Component<IPianoProps, void> {
         {notes.map((note) =>
             (<PianoKey play={playNote(note)}
                        stop={stopNote(note)}
-                       playing={piano.has('c')}
+                       playing={piano}
                        key={note}
                        note={note}/>))}
                        

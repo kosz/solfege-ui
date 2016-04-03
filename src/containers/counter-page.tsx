@@ -6,25 +6,6 @@ import Container from '../components/container';
 import Column from '../components/column';
 
 
-interface ICounterPageProps extends React.Props<any> {
-  counter: number;
-  increaseCounter: () => void;
-  decreaseCounter: () => void;
-};
-
-function mapStateToProps(state) {
-  return {
-    counter: state.counter.get('count'),
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    increaseCounter: (): void => dispatch(increment()),
-    decreaseCounter: (): void  => dispatch(decrement()),
-  };
-}
-
 class CounterPage extends React.Component<ICounterPageProps, void> {
   render() {
     const { counter, increaseCounter, decreaseCounter } = this.props;
@@ -48,3 +29,23 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CounterPage);
+
+
+interface ICounterPageProps extends React.Props<any> {
+  counter: number;
+  increaseCounter: () => void;
+  decreaseCounter: () => void;
+};
+
+function mapStateToProps(state) {
+  return {
+    counter: state.counter.get('count'),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    increaseCounter: (): void => dispatch(increment()),
+    decreaseCounter: (): void  => dispatch(decrement()),
+  };
+}
