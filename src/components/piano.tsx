@@ -5,14 +5,14 @@ import PianoKey from '../components/piano-key';
 import { play, stop } from '../actions/piano';
 
 interface IPianoProps extends React.Props<any> {
-  piano: any;
+  notes: any;
   playNote: (key) => any;
   stopNote: (key) => any;
 };
 
 function mapStateToProps(state) {
   return {
-    pino: state.piano
+    notes: state.piano.get('piano')
   };
 }
 
@@ -22,9 +22,6 @@ function mapDispatchToProps(dispatch) {
     stopNote: (key) => () => dispatch(stop(key)),
   };
 }
-
-const notes = ['c', 'c#', 'd', 'd#', 'e', 'f', 'f#',
-              'g', 'g#', 'a', 'a#', 'b' ]; 
 
 const whiteKeyStyle = {
   fill: '#FFFFFF',
@@ -39,55 +36,23 @@ class Piano extends React.Component<IPianoProps, void> {
 
   render() {
     
-    const { piano, playNote, stopNote } = this.props;
+    const { notes, playNote, stopNote } = this.props;
 
-    console.log('piano >', piano);
+    console.log('piano >', notes);
 
     return (
       <div>
         <h1>Piano</h1>
-        {notes.map((note) =>
-            (<PianoKey play={playNote(note)}
-                       stop={stopNote(note)}
-                       playing={piano}
-                       key={note}
-                       note={note}/>))}
-                       
+        
       <svg version="1.1" id="Layer_1" x="0px" y="0px">
-<polyline style={whiteKeyStyle} points="1,7.5 1,82.5 20,82.5 20,7.5 "/>
-<polyline style={whiteKeyStyle} points="22,7.5 22,82.5 43,82.5 43,7.5 "/>
-<polyline style={whiteKeyStyle} points="45,7.5 45,82.5 66,82.5 66,7.5 "/>
-<polyline style={whiteKeyStyle} points="122,7.5 122,82.5 154,82.5 154,7.5 "/>
-<polyline style={whiteKeyStyle} points="157,7.5 157,82.5 189,82.5 189,7.5 "/>
-<polyline style={whiteKeyStyle} points="193,7.5 193,82.5 225,82.5 225,7.5 "/>
-<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
-<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
-<polyline style={blackKeyStyle} points="37,7.5 37,54.5 59,54.5 59,7.5 "/>
-<polyline style={blackKeyStyle} points="73,7.5 73,54.5 95,54.5 95,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="145.5,7.5 145.5,54.5 167.5,54.5 167.5,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="181.5,7.5 181.5,54.5 203.5,54.5 203.5,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="218.5,7.5 218.5,54.5 240.5,54.5 240.5,7.5 "/>
-</svg>
-<svg version="1.1" id="Layer_1" x="0px" y="0px">
-<polyline style={whiteKeyStyle} points="14,7.5 14,82.5 46,82.5 46,7.5 "/>
-<polyline style={whiteKeyStyle} points="50,7.5 50,82.5 82,82.5 82,7.5 "/>
-<polyline style={whiteKeyStyle} points="86,7.5 86,82.5 118,82.5 118,7.5 "/>
-<polyline style={whiteKeyStyle} points="122,7.5 122,82.5 154,82.5 154,7.5 "/>
-<polyline style={whiteKeyStyle} points="157,7.5 157,82.5 189,82.5 189,7.5 "/>
-<polyline style={whiteKeyStyle} points="193,7.5 193,82.5 225,82.5 225,7.5 "/>
-<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
-<polyline style={blackKeyStyle} points="37,7.5 37,54.5 59,54.5 59,7.5 "/>
-<polyline style={blackKeyStyle} points="73,7.5 73,54.5 95,54.5 95,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="145.5,7.5 145.5,54.5 167.5,54.5 167.5,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="181.5,7.5 181.5,54.5 203.5,54.5 203.5,7.5 "/>
-<polyline style={blackKeyStyle}
-    points="218.5,7.5 218.5,54.5 240.5,54.5 240.5,7.5 "/>
-</svg>
+        {notes.map((note) =>
+            (<PianoKey play={playNote(note.note)}
+                       stop={stopNote(note.note)}
+                       key={note.note}
+                       style={note.style}
+                       svg={note.svg}
+                       note={note.note}/>))}
+      </svg>
         </div>
        
         );
@@ -99,3 +64,37 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Piano);
+//<polyline style={whiteKeyStyle} points="1,7.5 1,82.5 20,82.5 20,7.5 "/>
+//<polyline style={whiteKeyStyle} points="22,7.5 22,82.5 43,82.5 43,7.5 "/>
+//<polyline style={whiteKeyStyle} points="45,7.5 45,82.5 66,82.5 66,7.5 "/>
+//<polyline style={whiteKeyStyle} points="122,7.5 122,82.5 154,82.5 154,7.5 "/>
+//<polyline style={whiteKeyStyle} points="157,7.5 157,82.5 189,82.5 189,7.5 "/>
+//<polyline style={whiteKeyStyle} points="193,7.5 193,82.5 225,82.5 225,7.5 "/>
+//<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
+//<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
+//<polyline style={blackKeyStyle} points="37,7.5 37,54.5 59,54.5 59,7.5 "/>
+//<polyline style={blackKeyStyle} points="73,7.5 73,54.5 95,54.5 95,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="145.5,7.5 145.5,54.5 167.5,54.5 167.5,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="181.5,7.5 181.5,54.5 203.5,54.5 203.5,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="218.5,7.5 218.5,54.5 240.5,54.5 240.5,7.5 "/>
+//</svg>
+//<svg version="1.1" id="Layer_1" x="0px" y="0px">
+//<polyline style={whiteKeyStyle} points="14,7.5 14,82.5 46,82.5 46,7.5 "/>
+//<polyline style={whiteKeyStyle} points="50,7.5 50,82.5 82,82.5 82,7.5 "/>
+//<polyline style={whiteKeyStyle} points="86,7.5 86,82.5 118,82.5 118,7.5 "/>
+//<polyline style={whiteKeyStyle} points="122,7.5 122,82.5 154,82.5 154,7.5 "/>
+//<polyline style={whiteKeyStyle} points="157,7.5 157,82.5 189,82.5 189,7.5 "/>
+//<polyline style={whiteKeyStyle} points="193,7.5 193,82.5 225,82.5 225,7.5 "/>
+//<polyline style={whiteKeyStyle} points="229,7.5 229,82.5 261,82.5 261,7.5 "/>
+//<polyline style={blackKeyStyle} points="37,7.5 37,54.5 59,54.5 59,7.5 "/>
+//<polyline style={blackKeyStyle} points="73,7.5 73,54.5 95,54.5 95,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="145.5,7.5 145.5,54.5 167.5,54.5 167.5,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="181.5,7.5 181.5,54.5 203.5,54.5 203.5,7.5 "/>
+//<polyline style={blackKeyStyle}
+//    points="218.5,7.5 218.5,54.5 240.5,54.5 240.5,7.5 "/>
+

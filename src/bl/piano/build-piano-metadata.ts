@@ -68,10 +68,12 @@ export const getNoteForIteratorPositon = position => {
 const style = {
   white: {
     fill: '#FFFFFF',
-    stroke: '#000000'
+    stroke: '#000000',
+      zIndex: 10
   },
   black: {
-    stroke: '#000000'
+    stroke: '#000000',
+    zIndex: 1000
   }
 };
 
