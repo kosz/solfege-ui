@@ -45,7 +45,7 @@ describe('#buildPianoMetadata', () => {
     it('should return c# if position is 26', () => {
       assert.strictEqual(getNoteForIteratorPositon(26), '3c#'); 
     });
-
+  
   });
   
 });
