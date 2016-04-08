@@ -28,8 +28,9 @@ export default function buildPianoMetadata(octaveCount, startingOctave = 1) {
     currentStart = color === white ? currentStart + 20 + 2 : currentStart;
 
   }
+
+  return pianoMetadata.sortBy((note: any) => !!note.note.match(/#/));
   
-  return pianoMetadata;
 }
 
 const black = 'black';
@@ -43,8 +44,8 @@ export const getSvgPoints = {
     stop: currentStart + 20
   }),
   black: currentStart => ({
-    start: currentStart + 10,
-    stop: currentStart + 25
+    start: currentStart - 8,
+    stop: currentStart + 7
   })
 };
 
@@ -68,10 +69,12 @@ export const getNoteForIteratorPositon = position => {
 const style = {
   white: {
     fill: '#FFFFFF',
-    stroke: '#000000'
+    stroke: '#000000',
+      zIndex: 10
   },
   black: {
-    stroke: '#000000'
+    stroke: '#000000',
+    zIndex: 1000
   }
 };
 

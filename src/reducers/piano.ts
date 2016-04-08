@@ -1,11 +1,12 @@
 import { fromJS } from 'immutable';
+import buildPianoMetadata from '../bl/piano/build-piano-metadata';
 
 export const PLAY = 'PLAY';
 export const STOP = 'STOP';
 export const BUILD_PIANO = 'BUILD_PIANO';
 
 const INITIAL_STATE = fromJS({
-  piano: {}
+  piano: buildPianoMetadata(1, 3)
 });
 
 function piano(state = INITIAL_STATE, action = { type: '', 
