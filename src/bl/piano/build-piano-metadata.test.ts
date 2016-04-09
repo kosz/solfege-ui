@@ -13,21 +13,6 @@ describe('#buildPianoMetadata', () => {
     assert.strictEqual(buildPianoMetadata(2, 2).size, 24);
   });
 
-  it('it should have 1c on position 0 ' + 
-     'when octaveCount is 1 and startingOctave is 1', () => {
-    const piano = buildPianoMetadata(1, 1).toArray();
-    const note: any = piano[0];
-    assert.strictEqual(note.note, '1c');
-  });
-
-  it('it should have 2b on position 11 ' +
-     'when octaveCount is 1 and startingOctave is 2', 
-    () => {
-    const piano = buildPianoMetadata(1, 2).toArray();
-    const note: any = piano[11];
-    assert.strictEqual(note.note, '2b');
-  });
-
   describe('.getNoteForIteratorPosition', () => {
 
     it('should return c if position is 1', () => {

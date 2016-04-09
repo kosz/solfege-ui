@@ -5,6 +5,7 @@ import { PLAY,
          STOP,
          BUILD_PIANO } from './piano';
 import { Map } from 'immutable';
+import buildPianoMetadata from '../bl/piano/build-piano-metadata';
 
 let state = piano();
 
@@ -17,7 +18,7 @@ describe('piano', () => {
 
   describe('on BULD_PIANO', () => {
     it('sets the piano property', () => {
-      let p = {};
+      let p = buildPianoMetadata(1, 3);
       state = fireAction(piano, state, BUILD_PIANO, { piano: p });
       assert.strictEqual(state.get('piano'), p);
     });
@@ -26,7 +27,7 @@ describe('piano', () => {
   describe('on PLAY', () => {
     it('start playing', () => {
       const previousValue = state.count();
-      state = fireAction(piano, state, PLAY, { id: 'c' });
+      state = fireAction(piano, state, PLAY, { note: 'c' });
       //assert.strictEqual(state.count(), previousValue + 1);
     });
   });
@@ -34,7 +35,7 @@ describe('piano', () => {
   describe('on STOP', () => {
     it('stop playing', () => {
       const previousValue = state.count();
-      state = fireAction(piano, state, STOP, { id: 'c' });
+      state = fireAction(piano, state, STOP, { note: 'c' });
       //assert.strictEqual(state.count(), previousValue - 1);
     });
   });
