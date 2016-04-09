@@ -5,7 +5,7 @@ import { OrderedMap } from 'immutable';
  * @funciton buildPianoMetadata
  * 
  * Builds metadata for a custom piano object 
- * which will be used as the data kept in the immutable store.
+ * which will be used as the data kept in the store.
  */
 export default function buildPianoMetadata(octaveCount, startingOctave = 1) {
   let pianoMetadata = OrderedMap();
@@ -21,8 +21,9 @@ export default function buildPianoMetadata(octaveCount, startingOctave = 1) {
 
     pianoMetadata = pianoMetadata.set(note, {
       note,
-      svg: buildSvgCode[color](getSvgPoints[color](currentStart)),
-      style: style[color]
+      color,
+      playing: false,
+      svg: buildSvgCode[color](getSvgPoints[color](currentStart))
     });
 
     currentStart = color === white ? currentStart + 20 + 2 : currentStart;
@@ -65,18 +66,5 @@ export const getNoteForIteratorPositon = position => {
   }
   return `${octave}${notes[pos - 1]}`;
 };
-  
-const style = {
-  white: {
-    fill: '#FFFFFF',
-    stroke: '#000000',
-      zIndex: 10
-  },
-  black: {
-    stroke: '#000000',
-    zIndex: 1000
-  }
-};
 
-const notes = ['c', 'c#', 'd', 'd#', 'e', 'f', 'f#',
-              'g', 'g#', 'a', 'a#', 'b' ];
+const notes = ['c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#', 'a', 'a#', 'b'];

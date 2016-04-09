@@ -1,27 +1,42 @@
 import * as React from 'react';
 import * as ReduxForm from 'redux-form';
+const assign = require('object-assign');
 
 interface IPianoKeyProps extends React.Props<any> {
   note: any;
-  style: any;
-  svg: any;
   play: () => void;
   stop: () => void;
 };
 
 const PianoKey = ({
   note,
-  style,
-  svg,
   play,
   stop
-}: IPianoKeyProps) => (
-  <polyline style={style} points={svg}/>
-);
+}: IPianoKeyProps) => {
+
+  const style = assign({},
+    styles[note.color], 
+    note.playing ? styles.playing : {}
+  );
+
+  return (<polyline onMouseDown={play} 
+            onMouseUp={stop} 
+            style={style}
+            points={note.svg}/>);
+
+};
 
 const styles = {
-  base: {},
+  white: {
+    fill: '#FFFFFF',
+    stroke: '#000000'
+  },
+  black: {
+    stroke: '#000000'
+  },
+  playing: { 
+    fill: 'rgba(109,120,118,1)'
+  }
 };
 
 export default PianoKey;
-// <div onMouseDown={play} onMouseUp={stop}>{note}:{playing}</div>
