@@ -21,6 +21,7 @@ export default function buildPianoMetadata(octaveCount, startingOctave = 1) {
 
     pianoMetadata = pianoMetadata.set(note, {
       note,
+      playing: false,
       svg: buildSvgCode[color](getSvgPoints[color](currentStart)),
       style: style[color]
     });

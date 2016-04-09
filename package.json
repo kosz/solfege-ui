@@ -1,6 +1,6 @@
 {
   "name": "solfege-ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Solfege UI",
   "engines": {
     "node": "4.x"
