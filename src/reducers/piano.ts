@@ -10,8 +10,12 @@ const INITIAL_STATE = fromJS({
   piano: buildPianoMetadata(3, 3)
 });
 
-function piano(state = INITIAL_STATE, action = { type: '', 
-  payload: { note: 'c', piano: {} } }) {
+const DEFAULT_ACTION = { 
+  type: '', 
+  payload: { note: '', piano: {} } 
+};
+
+function piano(state = INITIAL_STATE, action = DEFAULT_ACTION) {
   switch (action.type) {
 
     case BUILD_PIANO:

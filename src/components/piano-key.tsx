@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReduxForm from 'redux-form';
-
-const R = require('ramda');
+const assign = require('object-assign');
 
 interface IPianoKeyProps extends React.Props<any> {
   note: any;
@@ -15,9 +14,11 @@ const PianoKey = ({
   stop
 }: IPianoKeyProps) => {
 
-  const style = note.playing ? 
-    R.merge(note.style, { fill: 'rgba(109,120,118,1)' }) :
-    note.style;
+  const style = assign({},
+    styles[note.color], 
+    note.playing ? styles.playing : {}
+  );
+
   return (<polyline onMouseDown={play} 
             onMouseUp={stop} 
             style={style}
@@ -26,7 +27,16 @@ const PianoKey = ({
 };
 
 const styles = {
-  base: {},
+  white: {
+    fill: '#FFFFFF',
+    stroke: '#000000'
+  },
+  black: {
+    stroke: '#000000'
+  },
+  playing: { 
+    fill: 'rgba(109,120,118,1)'
+  }
 };
 
 export default PianoKey;
