@@ -7,7 +7,7 @@ export const STOP = 'STOP';
 export const BUILD_PIANO = 'BUILD_PIANO';
 
 const INITIAL_STATE = fromJS({
-  piano: buildPianoMetadata(3, 3)
+  piano: buildPianoMetadata(2, 3)
 });
 
 const DEFAULT_ACTION = { 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReduxForm from 'redux-form';
 const assign = require('object-assign');
 
 interface IPianoKeyProps extends React.Props<any> {
@@ -21,6 +20,7 @@ const PianoKey = ({
 
   return (<polyline onMouseDown={play} 
             onMouseUp={stop} 
+            onMouseOut={stop}
             style={style}
             points={note.svg}/>);
 

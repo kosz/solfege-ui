@@ -14,6 +14,21 @@ export function buildPiano(octaves) {
 }
 
 export function play(note) {
+  return (dispatch, getState) => {
+    if (shouldPlay(getState(), note)) { 
+      return dispatch(startPlay(note));
+    }  
+  };
+}
+
+function shouldPlay(state, note) {
+  return !state.piano.getIn(['piano', note]).playing;
+}
+
+function startPlay(note) {
+  let audioElementInsideThePage: any = 
+    document.querySelector('#' + note.replace('#', 'sharp'));
+  audioElementInsideThePage.play();
   return {
     type: PLAY,
     payload: { note }
@@ -21,6 +36,24 @@ export function play(note) {
 }
 
 export function stop(note) {
+  return (dispatch, getState) => {
+    if (shouldStop(getState(), note)) { 
+      return dispatch(stopPlay(note));
+    }
+  };
+}
+
+function shouldStop(state, note) {
+  return state.piano.getIn(['piano', note]).playing;
+}
+
+function stopPlay(note) {
+
+  let audioElementInsideThePage: any = 
+    document.querySelector('#' + note.replace('#', 'sharp'));
+    audioElementInsideThePage.pause();
+    audioElementInsideThePage.currentTime = 0;
+  
   return {
     type: STOP,
     payload: { note }
