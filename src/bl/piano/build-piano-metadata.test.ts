@@ -16,19 +16,19 @@ describe('#buildPianoMetadata', () => {
   describe('.getNoteForIteratorPosition', () => {
 
     it('should return c if position is 1', () => {
-      assert.strictEqual(getNoteForIteratorPositon(1), '1c'); 
+      assert.strictEqual(getNoteForIteratorPositon(1), 'c1'); 
     });
     
     it('should return c if position is 13', () => {
-      assert.strictEqual(getNoteForIteratorPositon(13), '2c'); 
+      assert.strictEqual(getNoteForIteratorPositon(13), 'c2'); 
     });
 
     it('should return b if position is 24', () => {
-      assert.strictEqual(getNoteForIteratorPositon(24), '2b'); 
+      assert.strictEqual(getNoteForIteratorPositon(24), 'b2'); 
     });
 
     it('should return c# if position is 26', () => {
-      assert.strictEqual(getNoteForIteratorPositon(26), '3c#'); 
+      assert.strictEqual(getNoteForIteratorPositon(26), 'c#3'); 
     });
 
   });

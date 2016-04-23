@@ -64,7 +64,7 @@ export const getNoteForIteratorPositon = position => {
     pos -= 12;
     octave += 1;
   }
-  return `${octave}${notes[pos - 1]}`;
+  return `${notes[pos - 1]}${octave}`;
 };
 
 const notes = ['c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#', 'a', 'a#', 'b'];
