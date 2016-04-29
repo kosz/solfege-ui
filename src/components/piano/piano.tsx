@@ -31,10 +31,11 @@ class Piano extends React.Component<IPianoProps, void> {
     const { piano, playNote, stopNote } = this.props;
 
     return (
-      <svg className="mt4"
+      <div className="mt4">  
+      <svg 
            version="1.1"
            id="Layer_1"
-           width="600"
+           viewBox="0 0 500 500"
            x="0px"
            y="0px">
         {piano.toArray().map((note) =>
@@ -43,6 +44,7 @@ class Piano extends React.Component<IPianoProps, void> {
                        key={note.note}
                        note={note}/>))}
       </svg>
+      </div>
       );
   }
 
